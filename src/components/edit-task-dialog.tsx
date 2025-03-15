@@ -3,7 +3,6 @@
 import type React from "react"
 import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import type { Task } from "@/lib/types"
 import { updateTask } from "@/lib/actions"
 import {
   Button,
@@ -18,9 +17,10 @@ import {
   Select,
   MenuItem,
 } from "@mui/material"
+import { TaskType } from "@/lib/schema"
 
 interface EditTaskDialogProps {
-  task: Task
+  task: TaskType
   open: boolean
   onOpenChange: (open: boolean) => void
 }

@@ -1,15 +1,20 @@
 import { notFound } from "next/navigation"
-import { getBoardById, getColumnsForBoard, getTasksForBoard } from "@/lib/dbActions"
+import {
+  getBoardById,
+  getColumnsForBoard,
+  getTasksForBoard,
+} from "@/lib/dbActions"
 import { BoardHeader } from "@/components/board-header"
 import { BoardColumns } from "@/components/board-columns"
 import { Box, Container } from "@mui/material"
 
-export default async function BoardPage({
-  params,
-}: {
-  params: { id: string }
-}) {
-  const boardId = Number.parseInt(params.id)
+type BoardPageProps = {
+  params: Promise<{ id: string }>
+}
+
+export default async function BoardPage({ params }: BoardPageProps) {
+  const paramsFrom = await params
+  const boardId = Number.parseInt(paramsFrom.id)
 
   if (isNaN(boardId)) {
     return notFound()

@@ -9,7 +9,6 @@ import {
   Edit as EditIcon,
   Delete as DeleteIcon,
 } from "@mui/icons-material"
-import type { Task } from "@/lib/types"
 import { deleteTask } from "@/lib/actions"
 import {
   Card,
@@ -30,9 +29,10 @@ import {
   Chip,
 } from "@mui/material"
 import { EditTaskDialog } from "@/components/edit-task-dialog"
+import { TaskType } from "@/lib/schema"
 
 interface TaskCardProps {
-  task: Task
+  task: TaskType
 }
 
 export function TaskCard({ task }: TaskCardProps) {

@@ -45,6 +45,7 @@ export function CreateTaskDialog({ boardId, columnId }: CreateTaskDialogProps) {
         label: label || null,
         column_id: columnId,
         board_id: boardId,
+        position: 0, 
       })
 
       // Force a refresh of the page data
