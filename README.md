@@ -1,8 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Overview
+
+Trello clone that I vibe coded in a few hours one weekend. 
+
+This project uses NextJS 15, Material UI (MUI), and Drizzle ORM. 
+
+It is intended for one user (admin) operation. 
+
 
 ## Getting Started
 
-First, run the development server:
+First, create .env file at the root (same level as next.config.ts) and populate the 3 fields below.
+
+`DATABASE_URL` - this project uses PG and this is wher you provide the link to your DB
+
+`ADMIN_PASSWORD` - this is a string for the admin user that will be used to authenticate requests
+
+`JWT_SECRET` - this is used for middleware validation
+
+
+Second, run the development server:
 
 ```bash
 npm run dev
