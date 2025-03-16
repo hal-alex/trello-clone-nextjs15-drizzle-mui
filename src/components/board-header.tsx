@@ -9,7 +9,7 @@ import {
   Delete as DeleteIcon,
   Edit as EditIcon,
 } from "@mui/icons-material"
-import type { Board } from "@/lib/types"
+import type { BoardType } from "@/lib/schema"
 import { deleteBoard, updateBoardTitle } from "@/lib/actions"
 import {
   Typography,
@@ -29,7 +29,7 @@ import {
 } from "@mui/material"
 
 interface BoardHeaderProps {
-  board: Board
+  board: BoardType
 }
 
 export function BoardHeader({ board }: BoardHeaderProps) {

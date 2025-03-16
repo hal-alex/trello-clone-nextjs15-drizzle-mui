@@ -5,7 +5,6 @@ import {
   text,
   integer,
   timestamp,
-  uuid,
 } from "drizzle-orm/pg-core"
 
 export const boards = pgTable("boards", {
@@ -39,3 +38,5 @@ export const tasks = pgTable("tasks", {
 })
 
 export type TaskType = InferSelectModel<typeof tasks>
+export type ColumnType = InferSelectModel<typeof columns>
+export type BoardType = InferSelectModel<typeof boards>

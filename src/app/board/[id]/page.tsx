@@ -20,7 +20,7 @@ export default async function BoardPage({ params }: BoardPageProps) {
     return notFound()
   }
 
-  const board = await getBoardById(boardId)
+  const board = (await getBoardById(boardId))[0]
 
   if (!board) {
     return notFound()

@@ -5,15 +5,15 @@ import { useRouter } from "next/navigation"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
 import { Add as AddIcon } from "@mui/icons-material"
-import type { Column, Task } from "@/lib/types"
+import type { ColumnType, TaskType } from "@/lib/schema"
 import { createColumn } from "@/lib/actions"
 import { Button, TextField, Box, Paper } from "@mui/material"
 import { ColumnComponent } from "@/components/column"
 
 interface BoardColumnsProps {
   boardId: number
-  columns: Column[]
-  tasksByColumn: Record<number, Task[]>
+  columns: ColumnType[]
+  tasksByColumn: Record<number, TaskType[]>
 }
 
 export function BoardColumns({

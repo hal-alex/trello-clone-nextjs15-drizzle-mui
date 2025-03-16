@@ -33,7 +33,7 @@ export async function deleteBoard(id: number) {
 }
 
 export async function createColumn(boardId: number, title: string) {
-  const columnId = await createColumnInDb(title, boardId, 0)
+ await createColumnInDb(title, boardId, 0)
   revalidatePath(`/board/${boardId}`)
 }
 
@@ -53,7 +53,7 @@ export async function deleteColumn(id: number): Promise<void> {
 export async function createTask(
   task: Omit<TaskType, "id" | "created_at">,
 ) {
-  const taskId = await createTaskInDb(
+  await createTaskInDb(
     task.title,
     task.description,
     task.label,
