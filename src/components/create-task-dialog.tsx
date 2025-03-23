@@ -3,7 +3,11 @@
 import type React from "react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { Add as AddIcon } from "@mui/icons-material"
+import {
+  Add as AddIcon,
+  ExpandMore as ExpandMoreIcon,
+  ExpandLess as ExpandLessIcon,
+} from "@mui/icons-material"
 import { createTask } from "@/lib/actions"
 import {
   Button,
@@ -18,6 +22,7 @@ import {
   Select,
   MenuItem,
   IconButton,
+  Box,
 } from "@mui/material"
 
 interface CreateTaskDialogProps {
@@ -32,6 +37,7 @@ export function CreateTaskDialog({ boardId, columnId }: CreateTaskDialogProps) {
   const [description, setDescription] = useState("")
   const [label, setLabel] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -45,7 +51,7 @@ export function CreateTaskDialog({ boardId, columnId }: CreateTaskDialogProps) {
         label: label || null,
         column_id: columnId,
         board_id: boardId,
-        position: 0, 
+        position: 0,
       })
 
       // Force a refresh of the page data
@@ -64,6 +70,7 @@ export function CreateTaskDialog({ boardId, columnId }: CreateTaskDialogProps) {
     setTitle("")
     setDescription("")
     setLabel("")
+    setIsExpanded(false)
   }
 
   return (
@@ -104,10 +111,17 @@ export function CreateTaskDialog({ boardId, columnId }: CreateTaskDialogProps) {
               label="Description (optional)"
               fullWidth
               multiline
-              rows={3}
+              rows={isExpanded ? 10 : 3}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
+            <IconButton
+              onClick={() => setIsExpanded(!isExpanded)}
+              aria-label={isExpanded ? "Collapse" : "Expand"}
+              sx={{ display: "block", margin: "0 auto" }}
+            >
+              {isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+            </IconButton>
             <FormControl fullWidth margin="dense">
               <InputLabel id="label-select-label">Label (optional)</InputLabel>
               <Select

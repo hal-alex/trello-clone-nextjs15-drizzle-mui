@@ -16,7 +16,13 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  IconButton,
+  Box,
 } from "@mui/material"
+import {
+  ExpandMore as ExpandMoreIcon,
+  ExpandLess as ExpandLessIcon,
+} from "@mui/icons-material"
 import { TaskType } from "@/lib/schema"
 
 interface EditTaskDialogProps {
@@ -35,6 +41,7 @@ export function EditTaskDialog({
   const [description, setDescription] = useState(task.description || "")
   const [label, setLabel] = useState(task.label || "")
   const [isLoading, setIsLoading] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   useEffect(() => {
     if (open) {
@@ -92,10 +99,17 @@ export function EditTaskDialog({
             label="Description (optional)"
             fullWidth
             multiline
-            rows={3}
+            rows={isExpanded ? 10 : 3}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+          <IconButton
+            onClick={() => setIsExpanded(!isExpanded)}
+            aria-label={isExpanded ? "Collapse" : "Expand"}
+            sx={{ display: "block", margin: "0 auto" }}
+          >
+            {isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+          </IconButton>
           <FormControl fullWidth margin="dense">
             <InputLabel id="edit-label-select-label">
               Label (optional)
