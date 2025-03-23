@@ -22,7 +22,6 @@ import {
   Select,
   MenuItem,
   IconButton,
-  Box,
 } from "@mui/material"
 
 interface CreateTaskDialogProps {
